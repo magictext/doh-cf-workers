@@ -20,7 +20,9 @@ async function handleRequest(request) {
     const { method, headers, url } = request
     const searchParams = new URL(url).searchParams
     if (method == 'GET' && searchParams.has('dns')) {
-        res = fetch(doh + '?dns=' + searchParams.get('dns'), {
+        var pa = searchParams.get('dns');
+        console.log("收到解析请求："+ pa )
+        res = fetch(doh + '?dns=' + pa, {
             method: 'GET',
             headers: {
                 'Accept': contype,
